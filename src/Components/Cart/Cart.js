@@ -5,37 +5,25 @@ import { useContext } from "react";
 
 const Cart = (props) => {
   const cartcntx = useContext(CartContext);
-  // const cartcntx = {name:'deepak',
-  // items:[]}
 
-  let totalPrice = 0;
-  for (const item of cartcntx.CartItems) {
-    totalPrice += item.price * item.quantity;
-  }
-  const plusHandler = (item) => {
-  //   cartcntx.addItem(item, 1);
-  };
-
-  const minusHandler = (item) => {
-  //   cartcntx.removeItem(item);
-  };
-
+console.log(cartcntx.CartItems)
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {cartcntx.CartItems.map((item) => (
         // <li>{item.name} {item.price} quantity:{item.eachQty}</li>
         <li key={`${Math.random()}`}>
           <div>
-            <h3>{item.name}</h3>
+            <h3>{item.item.name}</h3>
+            <h4>{item.item.description}</h4>
             <div className={classes.values}>
               <div className={classes.amount}>
-                <h4>${item.price}</h4>
-                <h3>X{item.size}</h3>
+                <h4>${item.item.price}</h4>
+                <h3> S X{item.Small}</h3>
+                <h3>M X{item.Medium}</h3>
+                <h3>L X{item.Large}</h3>
+                {/* <h3>{item.size}</h3> */}
               </div>
-              <div className={classes.button}>
-                <button onClick={() => plusHandler(item)}>+</button>
-                <button onClick={() => minusHandler(item)}>-</button>
-              </div>
+             
             </div>
           </div>
           <hr />
@@ -50,7 +38,7 @@ const Cart = (props) => {
       {cartItems}
       <div className={classes.total}>
         <span>Total amount</span>
-        <span>{totalPrice.toFixed(2)}</span>
+        <span>{cartcntx.TotalPrice.toFixed(2)}</span>
       </div>
       <div className={classes.actions}>
         <button className={classes["button--alt"]} onClick={props.onClosebtn}>

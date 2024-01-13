@@ -1,8 +1,9 @@
 import Form from "./Components/addingForm";
 import { useState } from "react";
 import Cart from "./Components/Cart/Cart";
+import List from "./Components/list";
 import CartContext from "./Store/contextProvider";
-import List from './Components/list'
+import Header from "./Components/Cart/Header";
 function App() {
   const [showCart, setShowCart] = useState(false);
 
@@ -12,17 +13,12 @@ function App() {
   const openCart = () => {
     setShowCart(true);
   };
-  const quantity = 0;
   return (
     <CartContext>
-    
-
       {showCart && <Cart onClosebtn={closeCart} />}
-     
-      <button onClick={openCart}>Open Shopping Cart({quantity})</button>
-
+      <Header open={openCart} />
       <Form />
-      <List/>
+      <List />
     </CartContext>
   );
 }

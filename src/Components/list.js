@@ -2,9 +2,8 @@ import { useContext } from "react";
 import CartContext from "../Store/cartContext";
 const List = () => {
   const cartCtx = useContext(CartContext);
-  console.log(cartCtx.StoreItems);
-  const addItemCart = (item,size) => {
-    cartCtx.AddItems(item,size);
+  const addItemCart = (item, size) => {
+    cartCtx.AddItems(item, size);
   };
   return (
     <div>
@@ -14,10 +13,24 @@ const List = () => {
         {cartCtx.StoreItems.map((item) => (
           <li key={Math.random()}>
             Name:{item.name} Description:{item.description}Price:{item.price}
-          {/* Size S-{item.S} M-{item.M} L-{item.L} */}
-            <button onClick={()=>addItemCart(item.name,'s')}>Buy Small({item.S})</button>
-            <button onClick={()=>addItemCart(item.name,'m')}>Buy Medium({item.M})</button>
-            <button onClick={()=>addItemCart(item.name,'l')}>Buy Large({item.L})</button>
+            <button
+              onClick={() => addItemCart(item, "s")}
+              disabled={item.S === "out of stock"}
+            >
+              Buy Small({item.S})
+            </button>
+            <button
+              onClick={() => addItemCart(item, "m")}
+              disabled={item.M === "out of stock"}
+            >
+              Buy Medium({item.M})
+            </button>
+            <button
+              onClick={() => addItemCart(item, "l")}
+              disabled={item.L === "out of stock"}
+            >
+              Buy Large({item.L})
+            </button>
           </li>
         ))}
       </ul>

@@ -38,6 +38,13 @@ const Form = (e) => {
       L:quantityL
     });
     console.log(name, quantityS, quantityM,quantityL,price, description);
+    setDescription('')
+    setName('');
+    setPrice('');
+    setQuantityS('');
+    setQuantityM('');
+    setQuantityL('');
+
   };
   return (
     <form>

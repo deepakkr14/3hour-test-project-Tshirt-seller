@@ -3,9 +3,9 @@ const CartContext= React.createContext({
     CartItems:[],
     TotalPrice:0,
     AddItems:(name)=>{},
-    RemoveItems:(name)=>{},
     StoreItems:[],
     AddItemsToStore:(name)=>{},
+    TotalQuantity:0
 })
 
 
